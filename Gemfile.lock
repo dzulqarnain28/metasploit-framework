@@ -45,7 +45,7 @@ PATH
       net-ssh
       network_interface
       nexpose
-      nokogiri (~> 1.14.0)
+      nokogiri
       octokit (~> 4.0)
       openssl-ccm
       openvas-omp
@@ -574,4 +574,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   2.2.3
+   2.2.33
