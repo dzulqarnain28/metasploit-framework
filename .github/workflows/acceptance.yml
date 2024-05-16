@@ -133,16 +133,13 @@ jobs:
 
       - name: Setup Ruby
         env:
-          BUNDLE_WITHOUT: "coverage development"
+          BUNDLE: "coverage development"
           BUNDLE_FORCE_RUBY_PLATFORM: true
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-          cache-version: 4
-          # Github actions with Ruby requires Bundler 2.2.18+
-          # https://github.com/ruby/setup-ruby/tree/d2b39ad0b52eca07d23f3aa14fdf2a3fcc1f411c#windows
-          bundler: 2.2.33
+          cache-version: 6
 
       - name: acceptance
         env:
@@ -185,16 +182,13 @@ jobs:
       - name: Setup Ruby
         if: always()
         env:
-          BUNDLE_WITHOUT: "coverage development"
+          BUNDLE: "coverage development"
           BUNDLE_FORCE_RUBY_PLATFORM: true
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '${{ matrix.ruby }}'
           bundler-cache: true
-          cache-version: 4
-          # Github actions with Ruby requires Bundler 2.2.18+
-          # https://github.com/ruby/setup-ruby/tree/d2b39ad0b52eca07d23f3aa14fdf2a3fcc1f411c#windows
-          bundler: 2.2.33
+          cache-version: 6
 
       - uses: actions/download-artifact@v4
         id: download

@@ -53,6 +53,7 @@ jobs:
         with:
           ruby-version: '${{ matrix.ruby }}'
           bundler-cache: true
+          cache-version: 6
         env:
           BUNDLE_WITHOUT: "coverage development pcap"
 
