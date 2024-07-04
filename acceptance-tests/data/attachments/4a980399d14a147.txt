@@ -1,0 +1,93 @@
+use auxiliary/admin/mysql/mysql_enum
+Stopping all jobs...
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> run lhost=127.0.0.1 username=root password=password rhost=127.0.0.1 rport=3306 Verbose=true
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> [*] Running module against 127.0.0.1
+[+] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - Logged in to '' with 'root':'password'
+[*] 127.0.0.1:3306 - Running MySQL Enumerator...
+[*] 127.0.0.1:3306 - Enumerating Parameters
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'show variables'
+[*] 127.0.0.1:3306 - 	MySQL Version: 11.4.2-MariaDB-ubu2404
+[*] 127.0.0.1:3306 - 	Compiled for the following OS: debian-linux-gnu
+[*] 127.0.0.1:3306 - 	Architecture: x86_64
+[*] 127.0.0.1:3306 - 	Server Hostname: 021d44db465b
+[*] 127.0.0.1:3306 - 	Data Directory: /var/lib/mysql/
+[*] 127.0.0.1:3306 - 	Logging of queries and logins: ON
+[*] 127.0.0.1:3306 - 	Log Files Location: OFF
+[*] 127.0.0.1:3306 - 	Old Password Hashing Algorithm OFF
+[*] 127.0.0.1:3306 - 	Loading of local files: ON
+[*] 127.0.0.1:3306 - 	Deny logins with old Pre-4.1 Passwords: ON
+[*] 127.0.0.1:3306 - 	Skipping of GRANT TABLE: OFF
+[*] 127.0.0.1:3306 - 	Allow Use of symlinks for Database Files: YES
+[*] 127.0.0.1:3306 - 	Allow Table Merge: 
+[*] 127.0.0.1:3306 - 	SSL Connections: Enabled
+[*] 127.0.0.1:3306 - 	SSL CA Certificate: 
+[*] 127.0.0.1:3306 - 	SSL Key: 
+[*] 127.0.0.1:3306 - 	SSL Certificate: 
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'use mysql'
+[*] 127.0.0.1:3306 - Enumerating Accounts:
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host, authentication_string from mysql.user'
+[*] 127.0.0.1:3306 - 	List of Accounts with Password Hashes:
+[+] 127.0.0.1:3306 - 		User: mariadb.sys Host: localhost Password Hash: 
+[!] 127.0.0.1:3306 - No active DB -- Credential data will not be saved!
+[+] 127.0.0.1:3306 - 		User: root Host: localhost Password Hash: *2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+[+] 127.0.0.1:3306 - 		User: root Host: % Password Hash: *2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+[+] 127.0.0.1:3306 - 		User: healthcheck Host: 127.0.0.1 Password Hash: *134789267633AFFC8179CA128F0BB84354E1FDAA
+[+] 127.0.0.1:3306 - 		User: healthcheck Host: ::1 Password Hash: *134789267633AFFC8179CA128F0BB84354E1FDAA
+[+] 127.0.0.1:3306 - 		User: healthcheck Host: localhost Password Hash: *134789267633AFFC8179CA128F0BB84354E1FDAA
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host, ssl_type from mysql.user where
+        (ssl_type = 'ANY') or
+        (ssl_type = 'X509') or
+        (ssl_type = 'SPECIFIED')'
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Grant_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have GRANT Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Create_user_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have CREATE USER Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Reload_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have RELOAD Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Shutdown_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have SHUTDOWN Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Super_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have SUPER Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where FILE_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have FILE Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Process_priv = 'Y''
+[*] 127.0.0.1:3306 - 	The following users have PROCESS Privilege:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with '       select user, host
+        from mysql.user where
+        (Select_priv = 'Y') or
+        (Insert_priv = 'Y') or
+        (Update_priv = 'Y') or
+        (Delete_priv = 'Y') or
+        (Create_priv = 'Y') or
+        (Drop_priv = 'Y')'
+[*] 127.0.0.1:3306 - 	The following accounts have privileges to the mysql database:
+[*] 127.0.0.1:3306 - 		User: root Host: localhost
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where user = '''
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host, authentication_string from mysql.user where length(authentication_string) = 0 or authentication_string is null'
+[*] 127.0.0.1:3306 - 	The following accounts have empty passwords:
+[*] 127.0.0.1:3306 - 		User: mariadb.sys Host: localhost
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where host = "%"'
+[*] 127.0.0.1:3306 - 	The following accounts are not restricted by source:
+[*] 127.0.0.1:3306 - 		User: root Host: %
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - Disconnected
+[*] Auxiliary module execution completed
+sessions -K
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> jobs -K
+[*] Killing all sessions...
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> 

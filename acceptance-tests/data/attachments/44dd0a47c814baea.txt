@@ -1,0 +1,96 @@
+use auxiliary/scanner/mysql/mysql_login
+Stopping all jobs...
+[4mmsf6[0m post([1m[31mtest/mysql[0m) [0m> irb -e '(self.respond_to?(:framework) ? framework : self).datastore.user_defined.clear'
+[*] New in Metasploit 6.4 - The CreateSession option within this module can open an interactive session
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> run PASS_FILE= USER_FILE= CreateSession=true username=root password=password rhost=127.0.0.1 rport=3306
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> [+] 127.0.0.1:3306        - 127.0.0.1:3306 - Found remote MySQL version 9.0.0
+[!] 127.0.0.1:3306        - No active DB -- Credential data will not be saved!
+[+] 127.0.0.1:3306        - 127.0.0.1:3306 - Success: 'root:password'
+[*] MySQL session 2 opened (127.0.0.1:35601 -> 127.0.0.1:3306) at 2024-07-04 08:39:55 +0000
+use auxiliary/admin/mysql/mysql_enum
+[*] 127.0.0.1:3306        - Scanned 1 of 1 hosts (100% complete)
+[*] 127.0.0.1:3306        - Bruteforce completed, 1 credential was successful.
+[*] 127.0.0.1:3306        - 1 MySQL session was opened successfully.
+[*] Auxiliary module execution completed
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> run session=2 Verbose=true
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> [*] Using existing session 2
+[*] Running MySQL Enumerator...
+[*] Enumerating Parameters
+[*] 127.0.0.1:3306 MySQL - querying with 'show variables'
+[*] 	MySQL Version: 9.0.0
+[*] 	Compiled for the following OS: Linux
+[*] 	Architecture: x86_64
+[*] 	Server Hostname: 1097f292ab7b
+[*] 	Data Directory: /var/lib/mysql/
+[*] 	Logging of queries and logins: ON
+[*] 	Log Files Location: ON
+[*] 	Old Password Hashing Algorithm 
+[*] 	Loading of local files: OFF
+[*] 	Deny logins with old Pre-4.1 Passwords: 
+[*] 	Allow Use of symlinks for Database Files: DISABLED
+[*] 	Allow Table Merge: 
+[*] 	SSL Connection: 
+[*] 127.0.0.1:3306 MySQL - querying with 'use mysql'
+[*] Enumerating Accounts:
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host, authentication_string from mysql.user'
+[*] 	List of Accounts with Password Hashes:
+[+] 		User: root Host: % Password Hash: $A$005$XN^|cZnO9vMy}%oDCqTPentzX.1E7RKYyVT77tyMqauladdGKVBq08Wbl2
+[!] No active DB -- Credential data will not be saved!
+[+] 		User: mysql.infoschema Host: localhost Password Hash: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED
+[+] 		User: mysql.session Host: localhost Password Hash: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED
+[+] 		User: mysql.sys Host: localhost Password Hash: $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED
+[+] 		User: root Host: localhost Password Hash: $A$005$`K~t<whPb:%hG/n'\blVBKidwzN8q4m6OZ9LZ7tJGv9DDD7fKUhBURA.ZH4O0
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Grant_priv = 'Y''
+[*] 	The following users have GRANT Privilege:
+[*] 		User: root Host: %
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Create_user_priv = 'Y''
+[*] 	The following users have CREATE USER Privilege:
+[*] 		User: root Host: %
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Reload_priv = 'Y''
+[*] 	The following users have RELOAD Privilege:
+[*] 		User: root Host: %
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Shutdown_priv = 'Y''
+[*] 	The following users have SHUTDOWN Privilege:
+[*] 		User: root Host: %
+[*] 		User: mysql.session Host: localhost
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Super_priv = 'Y''
+[*] 	The following users have SUPER Privilege:
+[*] 		User: root Host: %
+[*] 		User: mysql.session Host: localhost
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where FILE_priv = 'Y''
+[*] 	The following users have FILE Privilege:
+[*] 		User: root Host: %
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where Process_priv = 'Y''
+[*] 	The following users have PROCESS Privilege:
+[*] 		User: root Host: %
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with '       select user, host
+        from mysql.user where
+        (Select_priv = 'Y') or
+        (Insert_priv = 'Y') or
+        (Update_priv = 'Y') or
+        (Delete_priv = 'Y') or
+        (Create_priv = 'Y') or
+        (Drop_priv = 'Y')'
+[*] 	The following accounts have privileges to the mysql database:
+[*] 		User: root Host: %
+[*] 		User: mysql.infoschema Host: localhost
+[*] 		User: root Host: localhost
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where user = '''
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host, authentication_string from mysql.user where length(authentication_string) = 0 or authentication_string is null'
+[*] 127.0.0.1:3306 MySQL - querying with 'select user, host from mysql.user where host = "%"'
+[*] 	The following accounts are not restricted by source:
+[*] 		User: root Host: %
+[*] Auxiliary module execution completed
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> sessions -K
+jobs -K
+[*] Killing all sessions...
+[*] 127.0.0.1 - MySQL session 2 closed.
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> 

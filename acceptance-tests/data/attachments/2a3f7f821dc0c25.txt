@@ -1,0 +1,14 @@
+{
+  "required_lines": [
+    {
+      "values": [
+        "(?-mix:Saving HashString as Loot)"
+      ],
+      "options": {
+      }
+    }
+  ],
+  "known_failures": [
+
+  ]
+}

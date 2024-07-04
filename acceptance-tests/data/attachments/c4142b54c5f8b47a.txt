@@ -1,0 +1,14 @@
+{
+  "required_lines": [
+    {
+      "values": [
+        "(?-mix:\\| \\d+.\\d+.*)"
+      ],
+      "options": {
+      }
+    }
+  ],
+  "known_failures": [
+
+  ]
+}

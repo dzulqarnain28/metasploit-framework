@@ -1,0 +1,14 @@
+{
+  "required_lines": [
+    {
+      "values": [
+        "(?-mix:(?-mix:\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+) is running MySQL \\d+.\\d+.*)"
+      ],
+      "options": {
+      }
+    }
+  ],
+  "known_failures": [
+
+  ]
+}
